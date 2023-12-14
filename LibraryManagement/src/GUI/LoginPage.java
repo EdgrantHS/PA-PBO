@@ -67,10 +67,6 @@ public class LoginPage implements Displayable{
         String usernameString = username.getText().trim();
         String passwordString = password.getText().trim();
 
-        if (usernameString.isEmpty() || passwordString.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Username and password cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
         // Register logic here
         Displayable.movePage(frame, new RegisterPage());
     }
