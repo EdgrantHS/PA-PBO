@@ -1,69 +1,38 @@
 package GUI;
 
+import GUI.SubGUIModel.BasePage;
+import GUI.SubGUIModel.Row;
+
 import javax.swing.*;
-import java.awt.*;
 
 public class MyAccountPage implements Displayable{
-    private static class Row{
-        private final String text;
-        private String value;
+    /*-----------------------------------------------Variables--------------------------------------------------------*/
+    //editable Text
+    public String nameText = "Edgrant Henderson Suryajaya";
+    public String emailText = "edgrant@netlab.com";
+    public String ratingText = "0";
 
-        public Row(String text, String value){
-            this.text = text;
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        public JPanel makeRow(){
-            JPanel row = new JPanel();
-            row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
-            JLabel nameText = new JLabel(this.text);
-            row.add(nameText);
-            JLabel nameVal = new JLabel(getValue());
-            row.add(nameVal);
-
-            return row;
-        }
-    }
+    /*----------------------------------------------------------------------------------------------------------------*/
 
     @Override
     public void display() {
         SwingUtilities.invokeLater(() -> {
-            // Create a new JFrame for the About Us page
-            JFrame frame = new JFrame("About Us");
-            NavigationBar navigationBar = new NavigationBar(frame);
-            frame.getContentPane().add(navigationBar, BorderLayout.NORTH);
-
-            // Menu
-            JPanel columns = new JPanel();
-            columns.setLayout(new BoxLayout(columns, BoxLayout.Y_AXIS));
-
-            frame.setSize(600, 400);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
+            BasePage basePage = new BasePage("Account Page");
 
 
             /*--------------------------------------------------------------------------------------------------------*/
             // Component setup
-            Row nameRow = new Row("Nama: ", "Edgrant Henderson Suryajaya");
-            columns.add(nameRow.makeRow());
+            Row nameRow = new Row("Name: ", nameText);
+            basePage.add(nameRow.create());
 
-            Row emailRow = new Row("Email: ", "edgrant@netlab.com");
-            columns.add(emailRow.makeRow());
+            Row emailRow = new Row("Email: ", emailText);
+            basePage.add(emailRow.create());
 
-            Row ratingRow = new Row("Rating: ", "0");
-            columns.add(ratingRow.makeRow());
+            Row ratingRow = new Row("Rating: ", ratingText);
+            basePage.add(ratingRow.create());
 
 
-            // Add the content panel to the frame
-            frame.add(columns);
+            basePage.render();
         });
     }
 }

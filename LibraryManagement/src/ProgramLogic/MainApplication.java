@@ -2,7 +2,7 @@ package ProgramLogic;
 
 import GUI.*;
 
-import static GUI.Displayable.displayPage;
+import static GUI.Displayable.movePage;
 
 /**
  * The main application class responsible for launching the application and managing page transitions.
@@ -14,6 +14,6 @@ import static GUI.Displayable.displayPage;
 public class MainApplication {
     public static void main(String[] args) {
 
-        displayPage(new MyAccountPage());
+        movePage(new LoginPage());
     }
 }

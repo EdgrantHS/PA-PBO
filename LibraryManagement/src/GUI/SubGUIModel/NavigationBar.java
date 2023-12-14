@@ -1,14 +1,15 @@
-package GUI;
+package GUI.SubGUIModel;
+
+import GUI.MainPage;
+import GUI.MyAccountPage;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import static GUI.Displayable.displayPage;
+import static GUI.Displayable.movePage;
 
 public class NavigationBar extends JPanel {
-    private JFrame frame;
+    private final JFrame frame;
 
     public NavigationBar(JFrame frame) {
         this.frame = frame;
@@ -37,13 +38,13 @@ public class NavigationBar extends JPanel {
         homeButton.addActionListener(e -> {
             // Handle Home button click
             JOptionPane.showMessageDialog(frame, "Home button clicked");
-            displayPage(new MainPage());
+            movePage(new MainPage());
         });
 
         accountPageButton.addActionListener(e -> {
             // Handle Model.Account Page button click
             JOptionPane.showMessageDialog(frame, "Model.Account Page button clicked");
-            displayPage(new MyAccountPage());
+            movePage(new MyAccountPage());
         });
 
         rentedBooksButton.addActionListener(e -> {
