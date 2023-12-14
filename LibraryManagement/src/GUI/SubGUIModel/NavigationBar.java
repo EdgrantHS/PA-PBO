@@ -20,7 +20,7 @@ public class NavigationBar extends JPanel {
 
         // Create buttons for navigation choices
         JButton homeButton = new JButton("Home");
-        JButton accountPageButton = new JButton("Model.Account Page");
+        JButton accountPageButton = new JButton("Account Page");
         JButton rentedBooksButton = new JButton("Rented Books");
 
         // Align buttons to the right using FlowLayout
@@ -37,19 +37,20 @@ public class NavigationBar extends JPanel {
         // Add action listeners to the buttons (customize these)
         homeButton.addActionListener(e -> {
             // Handle Home button click
-            JOptionPane.showMessageDialog(frame, "Home button clicked");
-            movePage(new MainPage());
+//            JOptionPane.showMessageDialog(frame, "Home button clicked");
+            movePage(frame, new MainPage());
         });
 
         accountPageButton.addActionListener(e -> {
             // Handle Model.Account Page button click
-            JOptionPane.showMessageDialog(frame, "Model.Account Page button clicked");
-            movePage(new MyAccountPage());
+//            JOptionPane.showMessageDialog(frame, "Model.Account Page button clicked");
+            movePage(frame, new MyAccountPage());
         });
 
         rentedBooksButton.addActionListener(e -> {
             // Handle Rented Books button click
-            JOptionPane.showMessageDialog(frame, "Rented Books button clicked");
+//            JOptionPane.showMessageDialog(frame, "Rented Books button clicked");
+            movePage(frame, new MyAccountPage());
         });
     }
 }

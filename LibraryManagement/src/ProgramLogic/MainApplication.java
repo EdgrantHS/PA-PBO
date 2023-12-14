@@ -2,6 +2,8 @@ package ProgramLogic;
 
 import GUI.*;
 
+import javax.swing.*;
+
 import static GUI.Displayable.movePage;
 
 /**
@@ -14,6 +16,6 @@ import static GUI.Displayable.movePage;
 public class MainApplication {
     public static void main(String[] args) {
 
-        movePage(new LoginPage());
+        movePage(new JFrame(), new LoginPage());
     }
 }

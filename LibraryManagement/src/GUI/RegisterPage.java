@@ -22,7 +22,7 @@ public class RegisterPage implements Displayable {
 
     public void display() {
         SwingUtilities.invokeLater(() -> {
-            BasePage basePage = new BasePage("Register Page");
+            BasePage basePage = new BasePage("Register Page", "no menu");
 
             // Username and Password TextFields
             username = new TextField("username: ");
@@ -36,7 +36,7 @@ public class RegisterPage implements Displayable {
 
             // Login button
             JButton loginButton = new JButton("Register");
-            loginButton.addActionListener(e -> register());
+            loginButton.addActionListener(e -> register(basePage.getFrame()));
             basePage.add(loginButton);
 
             basePage.render();
@@ -44,7 +44,7 @@ public class RegisterPage implements Displayable {
     }
 
 
-    private void register() {
+    private void register(JFrame frame) {
         // Check if the username or password fields are empty
         String usernameString = username.getText().trim();
         String passwordString = password.getText().trim();
@@ -63,5 +63,5 @@ public class RegisterPage implements Displayable {
         }
 
         // Register logic here
-        Displayable.movePage(new LoginPage());
+        Displayable.movePage(frame, new LoginPage());
     }}

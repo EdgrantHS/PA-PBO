@@ -13,7 +13,7 @@ import javax.swing.*;
 public class LoginPage implements Displayable{
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     //editable Text
-
+    // jangan lupa tambahin static account untuk nyimpen account yang kelog in
     private TextField username;
     private TextField password;
 
@@ -21,7 +21,7 @@ public class LoginPage implements Displayable{
 
     public void display() {
         SwingUtilities.invokeLater(() -> {
-            BasePage basePage = new BasePage("Login Page");
+            BasePage basePage = new BasePage("Login Page", "no menu");
 
             // Username and Password TextFields
             username = new TextField("username: ");
@@ -32,19 +32,19 @@ public class LoginPage implements Displayable{
 
             // Login button
             JButton loginButton = new JButton("Login");
-            loginButton.addActionListener(e -> login());
+            loginButton.addActionListener(e -> login(basePage.getFrame()));
             basePage.add(loginButton);
 
             // Register button
             JButton registerButton = new JButton("Register");
-            registerButton.addActionListener(e -> register());
+            registerButton.addActionListener(e -> register(basePage.getFrame()));
             basePage.add(registerButton);
 
             basePage.render();
         });
     }
 
-    private void login() {
+    private void login(JFrame frame) {
         // Check if the username or password fields are empty
         if (username.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and password cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -52,9 +52,17 @@ public class LoginPage implements Displayable{
         }
         // Login logic here
 
+        //
+        if(
+                true
+                //membuat checking login
+        ){
+            Displayable.movePage(frame, new MainPage());
+        }
+
     }
 
-    private void register() {
+    private void register(JFrame frame) {
         // Check if the username or password fields are empty
         String usernameString = username.getText().trim();
         String passwordString = password.getText().trim();
@@ -64,6 +72,6 @@ public class LoginPage implements Displayable{
             return;
         }
         // Register logic here
-        Displayable.movePage(new RegisterPage());
+        Displayable.movePage(frame, new RegisterPage());
     }
 }
