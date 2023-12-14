@@ -1,5 +1,4 @@
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+package Model;
 
 public class Account extends Serializable {
     public String name;

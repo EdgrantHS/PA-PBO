@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Represents the main page of the application (Singleton).
@@ -9,34 +10,30 @@ import javax.swing.*;
  *
  * @author Edgrant Henderson Suryajaya
  */
-public class MainPage {
-    private static MainPage instance;
+public class MainPage implements Displayable {
+    @Override
+    public void display() {
+        SwingUtilities.invokeLater(() -> {
+            // Create a new JFrame for the About Us page
+            JFrame frame = new JFrame("About Us");
+            NavigationBar navigationBar = new NavigationBar(frame);
+            frame.getContentPane().add(navigationBar, BorderLayout.NORTH);
 
-    // Private constructor to prevent external instantiation
-    private MainPage() {
-        // Initialize page components here
-    }
+            // Menu
+            JPanel columns = new JPanel();
+            columns.setLayout(new BoxLayout(columns, BoxLayout.Y_AXIS));
 
-    /**
-     * Gets the single instance of the main page.
-     *
-     * @return The singleton instance of the main page.
-     */
-    public static MainPage getInstance() {
-        if (instance == null) {
-            instance = new MainPage();
-        }
-        return instance;
-    }
+            frame.setSize(600, 400);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
 
-    /**
-     * Creates and returns the panel for the main page.
-     *
-     * @return The JPanel representing the main page.
-     */
-    public JPanel createPage() {
-        JPanel panel = new JPanel();
-        // Add main page components here
-        return panel;
+
+            /*--------------------------------------------------------------------------------------------------------*/
+
+
+
+            // Add the content panel to the frame
+            frame.add(columns);
+        });
     }
 }

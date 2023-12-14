@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static GUI.Displayable.displayPage;
+
 public class NavigationBar extends JPanel {
     private JFrame frame;
 
@@ -17,7 +19,7 @@ public class NavigationBar extends JPanel {
 
         // Create buttons for navigation choices
         JButton homeButton = new JButton("Home");
-        JButton accountPageButton = new JButton("Account Page");
+        JButton accountPageButton = new JButton("Model.Account Page");
         JButton rentedBooksButton = new JButton("Rented Books");
 
         // Align buttons to the right using FlowLayout
@@ -35,11 +37,13 @@ public class NavigationBar extends JPanel {
         homeButton.addActionListener(e -> {
             // Handle Home button click
             JOptionPane.showMessageDialog(frame, "Home button clicked");
+            displayPage(new MainPage());
         });
 
         accountPageButton.addActionListener(e -> {
-            // Handle Account Page button click
-            JOptionPane.showMessageDialog(frame, "Account Page button clicked");
+            // Handle Model.Account Page button click
+            JOptionPane.showMessageDialog(frame, "Model.Account Page button clicked");
+            displayPage(new MyAccountPage());
         });
 
         rentedBooksButton.addActionListener(e -> {
