@@ -8,14 +8,33 @@ import java.awt.*;
 
 import static GUI.Displayable.movePage;
 
+/**
+ * A navigation bar that allows users to navigate between different pages in the library management system.
+ *
+ * @author Edgrant
+ * @version 1.0
+ * @since 2023-03-08
+ */
 public class NavigationBar extends JPanel {
+
+    /**
+     * The frame that contains the navigation bar.
+     */
     private final JFrame frame;
 
+    /**
+     * Creates a new navigation bar.
+     *
+     * @param frame The frame that contains the navigation bar.
+     */
     public NavigationBar(JFrame frame) {
         this.frame = frame;
         createNavigationBar();
     }
 
+    /**
+     * Creates the navigation bar.
+     */
     private void createNavigationBar() {
 
         // Create buttons for navigation choices

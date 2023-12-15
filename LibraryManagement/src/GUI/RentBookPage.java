@@ -7,11 +7,12 @@ import com.sun.tools.javac.Main;
 import javax.swing.*;
 
 /**
- * Represents the register page of the application (Singleton).
+ * Represents the rent book page of the application (Singleton).
  *
  * @author Edgrant Henderson Suryajaya
  */
 public class RentBookPage implements Displayable {
+
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     //editable Text
 
@@ -19,9 +20,12 @@ public class RentBookPage implements Displayable {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the rent book page.
+     */
     public void display() {
         SwingUtilities.invokeLater(() -> {
-            BasePage basePage = new BasePage("Register Page");
+            BasePage basePage = new BasePage("Rent Book Page");
 
             // Username and Password TextFields
             returnDate = new TextField("Return Date: ");
@@ -49,4 +53,5 @@ public class RentBookPage implements Displayable {
 
         // Register logic here
         Displayable.movePage(frame, new MainPage());
-    }}
+    }
+}
