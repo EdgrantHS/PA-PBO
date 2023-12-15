@@ -2,6 +2,7 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
+import ProgramLogic.AccountController;
 
 import javax.swing.*;
 
@@ -15,6 +16,8 @@ public class RegisterPage implements Displayable {
     //editable Text
 
     private TextField username;
+    private TextField name;
+    private TextField email;
     private TextField password;
     private TextField passwordConfirm;
 
@@ -27,6 +30,12 @@ public class RegisterPage implements Displayable {
             // Username and Password TextFields
             username = new TextField("username: ");
             basePage.add(username.create());
+
+            name = new TextField("username: ");
+            basePage.add(name.create());
+
+            email = new TextField("email: ");
+            basePage.add(email.create());
 
             password = new TextField("password: ");
             basePage.add(password.create());
@@ -45,23 +54,30 @@ public class RegisterPage implements Displayable {
 
 
     private void register(JFrame frame) {
-        // Check if the username or password fields are empty
         String usernameString = username.getText().trim();
+        String nameString = name.getText().trim();
+        String emailString = email.getText().trim();
         String passwordString = password.getText().trim();
         String passwordConfirmString = passwordConfirm.getText().trim();
 
         //if input is empty
-        if (usernameString.isEmpty() || passwordString.isEmpty()) {
+        if (usernameString.isEmpty() || passwordString.isEmpty() || passwordConfirmString.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and password cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        //if password doesn't match
         if (!passwordString.equals(passwordConfirmString)) {
-            JOptionPane.showMessageDialog(null, "Password doesn't match", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Password and password confirmation do not match.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Register logic here
-        Displayable.movePage(frame, new LoginPage());
-    }}
+        if (AccountController.register(usernameString, nameString, emailString, passwordString)) {
+            // Successful registration
+            JOptionPane.showMessageDialog(null, "Registration successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            Displayable.movePage(frame, new LoginPage());
+        } else {
+            // Failed registration (username already taken)
+            JOptionPane.showMessageDialog(null, "Username already taken. Please choose another one.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}

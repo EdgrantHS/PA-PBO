@@ -2,6 +2,8 @@ package GUI.SubGUIModel;
 
 import GUI.MainPage;
 import GUI.MyAccountPage;
+import Model.Account;
+import ProgramLogic.AccountController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,15 +63,19 @@ public class NavigationBar extends JPanel {
         });
 
         accountPageButton.addActionListener(e -> {
-            // Handle Model.Account Page button click
+            Account currentUserAccount = AccountController.getAccountDetails();
+
+            MyAccountPage myAccountPage = new MyAccountPage(currentUserAccount);
+                // Handle Model.Account Page button click
 //            JOptionPane.showMessageDialog(frame, "Model.Account Page button clicked");
-            movePage(frame, new MyAccountPage());
+            movePage(frame, myAccountPage);
+
         });
 
         rentedBooksButton.addActionListener(e -> {
             // Handle Rented Books button click
 //            JOptionPane.showMessageDialog(frame, "Rented Books button clicked");
-            movePage(frame, new MyAccountPage());
+            //movePage(frame, RentedBooksPage());
         });
     }
 }

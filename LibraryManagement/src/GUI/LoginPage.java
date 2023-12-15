@@ -2,6 +2,7 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
+import ProgramLogic.AccountController;
 
 import javax.swing.*;
 
@@ -45,29 +46,25 @@ public class LoginPage implements Displayable{
     }
 
     private void login(JFrame frame) {
-        // Check if the username or password fields are empty
+        String usernameString = username.getText().trim();
+        String passwordString = password.getText().trim();
+
         if (username.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and password cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        // Login logic here
 
-        //
-        if(
-                true
-                //membuat checking login
-        ){
+        if (AccountController.authenticate(usernameString, passwordString)) {
+            // Successful login
+            JOptionPane.showMessageDialog(null, "Login successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
             Displayable.movePage(frame, new MainPage());
+        } else {
+            // Failed login
+            JOptionPane.showMessageDialog(null, "Invalid username or password.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     private void register(JFrame frame) {
-        // Check if the username or password fields are empty
-        String usernameString = username.getText().trim();
-        String passwordString = password.getText().trim();
-
-        // Register logic here
         Displayable.movePage(frame, new RegisterPage());
     }
 }
