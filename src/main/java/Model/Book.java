@@ -1,8 +1,11 @@
 package Model;
 
+import org.bson.codecs.pojo.annotations.BsonId;
+
 import java.sql.Timestamp;
 
 public class Book extends Serializable {
+    @BsonId
     public String title;
     public String author;
     public String publisher;
@@ -10,28 +13,56 @@ public class Book extends Serializable {
     private int amount;
     private boolean availability;
 
-    public Book(int isbn, String title, String author, String publisher, Timestamp publishTime, int amount) {
-        this.id = isbn;
-        this.title = title;
-        this.author = author;
-        this.publisher = publisher;
-        this.publishTime = publishTime;
-        if (amount <= 0) {
-            this.amount = 0;
-            this.availability = false;
-        }
-        else {
-            this.amount = amount;
-            this.availability = true;
-        }
+    public Book() {
+        super();
     }
 
-    public boolean getAvailability() {
-        return this.availability;
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public Timestamp getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Timestamp publishTime) {
+        this.publishTime = publishTime;
     }
 
     public int getAmount() {
-        return this.amount;
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
     }
 
     public void addThisBook() {
