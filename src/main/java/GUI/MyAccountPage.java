@@ -24,7 +24,7 @@ public class MyAccountPage implements Displayable{
         this.usernameText = account.getUsername();
         this.nameText = account.getName();
         this.emailText = account.getEmail();
-        this.ratingText = account.getRating();
+        this.ratingText = account.rating;
     }
 
     @Override
