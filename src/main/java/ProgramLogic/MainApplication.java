@@ -15,7 +15,8 @@ import static GUI.Displayable.movePage;
  */
 public class MainApplication {
     public static void main(String[] args) {
-
+//        BookController.generateBook();
         movePage(new JFrame(), new LoginPage());
+
     }
 }

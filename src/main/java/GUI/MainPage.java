@@ -2,6 +2,7 @@ package GUI;
 
 import Model.Book;
 import GUI.SubGUIModel.NavigationBar;
+import ProgramLogic.BookController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class MainPage implements Displayable {
     // Assume these are somehow populated with data from your data source
 
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    private List<Book> books; // This should be populated with your books data
+    private List<Book> books = new ArrayList<>(); // This should be populated with your books data
     private int itemsPerPage = 10;
     private int currentPage = 1;
 
@@ -29,41 +30,7 @@ public class MainPage implements Displayable {
     /*----------------------------------------------------------------------------------------------------------------*/
     @Override
     public void display() {
-        //ini nanti diganti API call utk dapetin list seluruh buku
-        books = new ArrayList<>();
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
+        books = BookController.getListBook();
 
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Main Page");

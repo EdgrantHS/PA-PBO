@@ -1,61 +1,63 @@
 package ProgramLogic;
 
-import Model.Account;
+import Model.Borrow;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import db.MongoDB;
-import org.bson.types.ObjectId;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BorrowController {
-    public static MongoCollection<Account> collection = MongoDB.getDatabaseInstance().getCollection("Account", Account.class);
-    private static Account loggedInAccount;
 
-    public static boolean authenticate(String username, String password) {
-        Account exist = collection.find(Filters.and(
-                Filters.eq("username", username),
-                Filters.eq("password", password)
-        )).first();
+    public static MongoCollection<Borrow> collection = MongoDB.getDatabaseInstance().getCollection("Borrow", Borrow.class);
 
-        if (exist != null) {
-            System.out.println("Account found: " + exist);
-            loggedInAccount = exist;
-            return true;
+    public static boolean rentBook(int accountId, int bookId, String returnDate) {
+        // Check if returnDate > current date
+        if (isReturnDateValid(returnDate)) {
+            // Check if the book is available
+            if (isBookAvailable(bookId)) {
+                // Perform booking
+                Borrow borrow = new Borrow(accountId, bookId, getTimestampFromString(returnDate));
+                collection.insertOne(borrow);
+                return true;
+            } else {
+                System.out.println("Book is not available.");
+            }
         } else {
-            System.out.println("Account not found");
-            return false;
+            System.out.println("Invalid return date.");
         }
+        return false;
     }
 
-    public static Account getAccountDetails() {
-        // Retrieve account details based on the username
-        return loggedInAccount;
+    //check returnDate > current date
+    private static boolean isReturnDateValid(String returnDate) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date currentDate = new Date();
+            Date parsedReturnDate = dateFormat.parse(returnDate);
+            return parsedReturnDate.after(currentDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
-    public static boolean register(String username, String name, String email, String password) {
-        boolean exist = collection.find(Filters.and(
-                Filters.eq("username", username),
-                Filters.eq("email", email),
-                Filters.eq("password",password)
-        )).first() != null;
-        // Check if the username already exists
-        if (exist) {
-            return false; // Username already taken
+    private static boolean isBookAvailable(int bookId) {
+        // asumsi : buku avai, alwys
+        return true;
+    }
+
+    private static Timestamp getTimestampFromString(String date) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date parsedDate = dateFormat.parse(date);
+            return new Timestamp(parsedDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-
-        // Register the new user
-        Account a = new Account();
-        a._id = new ObjectId();
-        a.setUsername(username);
-        a.setEmail(email);
-        a.setPassword(password);
-        a.setName(name);
-
-        if (collection.insertOne(a).wasAcknowledged()) {
-            System.out.println("New Account added: " + a);
-        } else {
-            System.out.println("Insertion failed");
-        }
-
-        return true; // Registration successful
+        return null;
     }
 }

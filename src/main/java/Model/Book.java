@@ -1,21 +1,21 @@
 package Model;
 
 import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.types.ObjectId;
 
 import java.sql.Timestamp;
 
 public class Book extends Serializable {
     @BsonId
+    public ObjectId _id;
     public String title;
     public String author;
     public String publisher;
-    public Timestamp publishTime;
+    public String publishTime;
     private int amount;
     private boolean availability;
 
-    public Book() {
-        super();
-    }
+    public Book() { super(); };
 
     public String getTitle() {
         return title;
@@ -41,11 +41,11 @@ public class Book extends Serializable {
         this.publisher = publisher;
     }
 
-    public Timestamp getPublishTime() {
+    public String getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(Timestamp publishTime) {
+    public void setPublishTime(String publishTime) {
         this.publishTime = publishTime;
     }
 

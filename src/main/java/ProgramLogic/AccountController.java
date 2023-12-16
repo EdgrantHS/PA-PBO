@@ -13,6 +13,7 @@ import java.util.Map;
 
 public class AccountController {
     public static MongoCollection<Account> collection = MongoDB.getDatabaseInstance().getCollection("Account", Account.class);
+    public static Map<String, Account> dataBaseAcc = new HashMap<>();
     private static Account loggedInAccount;
 
     public static boolean authenticate(String username, String password) {
@@ -40,7 +41,8 @@ public class AccountController {
         boolean exist = collection.find(Filters.and(
                 Filters.eq("username", username),
                 Filters.eq("email", email),
-                Filters.eq("password",password)
+                Filters.eq("password", password)
+
         )).first() != null;
         // Check if the username already exists
         if (exist) {

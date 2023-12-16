@@ -22,8 +22,12 @@ public class MongoDB {
         MongoClient mongoClient = MyMongoClient.getMongoClient();
 
         // Send a ping to confirm a successful connection
-        MongoDatabase database = mongoClient.getDatabase("Database MongoDB").withCodecRegistry(pojoCodecRegistry);
+        MongoDatabase database = mongoClient.getDatabase("LibManagement").withCodecRegistry(pojoCodecRegistry);
 
         return database;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
