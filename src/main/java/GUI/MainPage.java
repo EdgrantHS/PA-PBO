@@ -1,17 +1,11 @@
 package GUI;
 
+import GUI.SubGUIModel.RefreshButton;
 import Model.Book;
 import GUI.SubGUIModel.NavigationBar;
 import ProgramLogic.BookController;
-import com.mongodb.client.ChangeStreamIterable;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCursor;
-import com.mongodb.client.model.changestream.ChangeStreamDocument;
-import org.bson.Document;
-
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +14,7 @@ public class MainPage implements Displayable {
     // Assume these are somehow populated with data from your data source
 
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    public static List<Book> books; // This should be populated with your books data
+    public static List<Book> books = new ArrayList<>(); // This should be populated with your books data
     private int itemsPerPage = 10;
     private int currentPage = 1;
 
@@ -35,9 +29,7 @@ public class MainPage implements Displayable {
     /*----------------------------------------------------------------------------------------------------------------*/
     @Override
     public void display() {
-        // Put the books collection into the List
-        books = new ArrayList<>();
-        books.addAll(BookController.collection.find().into(new ArrayList<>()));
+        books = BookController.getListBook();
 
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Main Page");
@@ -51,6 +43,11 @@ public class MainPage implements Displayable {
             booksPanel = new JPanel();
             booksPanel.setLayout(new BoxLayout(booksPanel, BoxLayout.Y_AXIS));
             frame.getContentPane().add(new JScrollPane(booksPanel), BorderLayout.CENTER);
+
+            // Refresh button
+            RefreshButton refreshButton = new RefreshButton(frame, RentedBooksPage.class);
+            JPanel refreshButtonPanel = refreshButton.create();
+            frame.getContentPane().add(refreshButtonPanel, BorderLayout.EAST);
 
             // Pagination controls
             JPanel paginationPanel = new JPanel();

@@ -26,4 +26,8 @@ public class MongoDB {
 
         return database;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

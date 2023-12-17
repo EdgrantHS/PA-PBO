@@ -7,8 +7,6 @@ import java.awt.*;
  * A text field that allows users to input text.
  *
  * @author Edgrant
- * @version 1.0
- * @since 2023-03-08
  */
 public class TextField {
 

@@ -18,53 +18,19 @@ public class Borrow extends Serializable {
         this.borrowStatus = BorrowStatus.BORROWED;
     }
 
-    public Borrow() {super();};
-
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
-
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
-    public BorrowStatus getBorrowStatus() {
-        return borrowStatus;
-    }
-
-    public void setBorrowStatus(BorrowStatus borrowStatus) {
-        this.borrowStatus = borrowStatus;
-    }
-
-    public Timestamp getBorrowTime() {
-        return borrowTime;
-    }
-
-    public void setBorrowTime(Timestamp borrowTime) {
-        this.borrowTime = borrowTime;
-    }
-
-    public Timestamp getReturnTime() {
-        return returnTime;
-    }
-
-    public void setReturnTime(Timestamp returnTime) {
-        this.returnTime = returnTime;
-    }
-
     public void bookIsReturned() {
         this.borrowStatus = BorrowStatus.RETURNED;
     }
 
     public void bookIsLost() {
         this.borrowStatus = BorrowStatus.LOST;
+    }
+
+    public Timestamp getBorrowTime() {
+        return this.borrowTime;
+    }
+
+    public Timestamp getReturnTime() {
+        return this.returnTime;
     }
 }

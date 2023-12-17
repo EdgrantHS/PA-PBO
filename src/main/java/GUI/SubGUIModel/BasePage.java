@@ -6,8 +6,6 @@ import java.awt.*;
  * A base class for all pages in the library management system.
  *
  * @author Edgrant
- * @version 1.0
- * @since 2023-03-08
  */
 public class BasePage {
 

@@ -7,8 +7,6 @@ import javax.swing.*;
  * A model for a single row in a table.
  *
  * @author Edgrant
- * @version 1.0
- * @since 2023-03-08
  */
 public class Row {
 
