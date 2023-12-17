@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.SubGUIModel.RefreshButton;
 import Model.Book;
 import GUI.SubGUIModel.NavigationBar;
 import ProgramLogic.BookController;
@@ -44,6 +45,11 @@ public class MainPage implements Displayable {
             booksPanel = new JPanel();
             booksPanel.setLayout(new BoxLayout(booksPanel, BoxLayout.Y_AXIS));
             frame.getContentPane().add(new JScrollPane(booksPanel), BorderLayout.CENTER);
+
+            // Refresh button
+            RefreshButton refreshButton = new RefreshButton(frame, RentedBooksPage.class);
+            JPanel refreshButtonPanel = refreshButton.create();
+            frame.getContentPane().add(refreshButtonPanel, BorderLayout.EAST);
 
             // Pagination controls
             JPanel paginationPanel = new JPanel();
