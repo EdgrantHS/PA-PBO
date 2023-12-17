@@ -1,17 +1,14 @@
 package ProgramLogic;
 
+
 import GUI.MainPage;
 import Model.Book;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.changestream.ChangeStreamDocument;
 import db.MongoDB;
-import Model.Book;
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import db.MongoDB;
 import org.bson.types.ObjectId;
-
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
