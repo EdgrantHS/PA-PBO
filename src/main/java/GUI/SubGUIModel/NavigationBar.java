@@ -2,6 +2,7 @@ package GUI.SubGUIModel;
 
 import GUI.MainPage;
 import GUI.MyAccountPage;
+import GUI.RentedBooksPage;
 import Model.Account;
 import ProgramLogic.AccountController;
 
@@ -14,8 +15,6 @@ import static GUI.Displayable.movePage;
  * A navigation bar that allows users to navigate between different pages in the library management system.
  *
  * @author Edgrant
- * @version 1.0
- * @since 2023-03-08
  */
 public class NavigationBar extends JPanel {
 
@@ -75,7 +74,7 @@ public class NavigationBar extends JPanel {
         rentedBooksButton.addActionListener(e -> {
             // Handle Rented Books button click
 //            JOptionPane.showMessageDialog(frame, "Rented Books button clicked");
-            //movePage(frame, RentedBooksPage());
+            movePage(frame, new RentedBooksPage());
         });
     }
 }

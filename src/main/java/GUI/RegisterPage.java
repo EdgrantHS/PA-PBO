@@ -31,7 +31,7 @@ public class RegisterPage implements Displayable {
             username = new TextField("username: ");
             basePage.add(username.create());
 
-            name = new TextField("username: ");
+            name = new TextField("Full Name: ");
             basePage.add(name.create());
 
             email = new TextField("email: ");

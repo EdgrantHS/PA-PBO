@@ -8,7 +8,9 @@ import db.MongoDB;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class BorrowController {
 
@@ -59,5 +61,10 @@ public class BorrowController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static List<Borrow> handleGetBook() {
+        //logika handle get book di sini
+        return collection.find().into(new ArrayList<>());
     }
 }
