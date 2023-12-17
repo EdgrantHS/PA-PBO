@@ -52,6 +52,10 @@ public class TextField {
         JPanel row = new JPanel();
         row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
         JLabel hintTextL = new JLabel(this.hintText);
+
+        //set padding
+        row.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+
         row.add(hintTextL);
 
         inputTextF = new JTextField();

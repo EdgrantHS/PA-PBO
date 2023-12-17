@@ -45,7 +45,7 @@ public class MainPage implements Displayable {
             frame.getContentPane().add(new JScrollPane(booksPanel), BorderLayout.CENTER);
 
             // Refresh button
-            RefreshButton refreshButton = new RefreshButton(frame, RentedBooksPage.class);
+            RefreshButton refreshButton = new RefreshButton(frame, MainPage.class);
             JPanel refreshButtonPanel = refreshButton.create();
             frame.getContentPane().add(refreshButtonPanel, BorderLayout.EAST);
 

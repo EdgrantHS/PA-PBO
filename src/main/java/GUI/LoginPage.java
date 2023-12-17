@@ -31,14 +31,26 @@ public class LoginPage implements Displayable{
             password = new TextField("password: ");
             basePage.add(password.create());
 
+            // padding
+            JPanel padding = new JPanel();
+            padding.add(Box.createVerticalStrut(20));
+            basePage.add(padding);
+
             // Login button
             JButton loginButton = new JButton("Login");
             loginButton.addActionListener(e -> login(basePage.getFrame()));
+            loginButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
             basePage.add(loginButton);
+
+            // padding
+            JPanel padding2 = new JPanel();
+            padding2.add(Box.createVerticalStrut(5));
+            basePage.add(padding2);
 
             // Register button
             JButton registerButton = new JButton("Register");
             registerButton.addActionListener(e -> register(basePage.getFrame()));
+            registerButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
             basePage.add(registerButton);
 
             basePage.render();
