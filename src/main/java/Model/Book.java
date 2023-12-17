@@ -4,7 +4,7 @@ import org.bson.codecs.pojo.annotations.BsonId;
 
 import java.sql.Timestamp;
 
-public class Book extends Serializable {
+public class Book extends Serializable implements AutoCloseable {
     @BsonId
     public String title;
     public String author;
@@ -76,5 +76,10 @@ public class Book extends Serializable {
             this.amount = 0;
             this.availability = false;
         }
+    }
+
+    @Override
+    public void close() throws Exception {
+        return;
     }
 }

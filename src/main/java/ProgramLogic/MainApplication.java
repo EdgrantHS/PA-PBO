@@ -17,5 +17,6 @@ public class MainApplication {
     public static void main(String[] args) {
 
         movePage(new JFrame(), new LoginPage());
+        BookController.booksObserver();
     }
 }

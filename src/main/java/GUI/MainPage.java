@@ -2,6 +2,12 @@ package GUI;
 
 import Model.Book;
 import GUI.SubGUIModel.NavigationBar;
+import ProgramLogic.BookController;
+import com.mongodb.client.ChangeStreamIterable;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.changestream.ChangeStreamDocument;
+import org.bson.Document;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +20,7 @@ public class MainPage implements Displayable {
     // Assume these are somehow populated with data from your data source
 
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    private List<Book> books; // This should be populated with your books data
+    public static List<Book> books; // This should be populated with your books data
     private int itemsPerPage = 10;
     private int currentPage = 1;
 
@@ -29,41 +35,9 @@ public class MainPage implements Displayable {
     /*----------------------------------------------------------------------------------------------------------------*/
     @Override
     public void display() {
-        //ini nanti diganti API call utk dapetin list seluruh buku
+        // Put the books collection into the List
         books = new ArrayList<>();
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
-//        books.add(new Book(0, "1", "2", "3", new Timestamp(4), 2));
+        books.addAll(BookController.collection.find().into(new ArrayList<>()));
 
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Main Page");
