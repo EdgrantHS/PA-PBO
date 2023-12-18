@@ -59,10 +59,6 @@ public class RentedBooksPage implements Displayable {
             nextButton = new JButton("Next >");
             pageLabel = new JLabel();
 
-            // Initialize the display button
-            displayButton = new JButton("Display");
-            displayButton.addActionListener(e -> loadBorrows());
-
             prevButton.addActionListener(e -> changePage(-1));
             nextButton.addActionListener(e -> changePage(1));
 
