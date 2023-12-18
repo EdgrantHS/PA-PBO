@@ -15,7 +15,20 @@ public class Book extends Serializable implements AutoCloseable {
     private int amount;
     private boolean availability;
 
-    public Book() { super(); };
+
+    //constructor
+    public Book(String title, String author, String publisher, String publishTime, int amount) {
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.publishTime = publishTime;
+        this.amount = amount;
+        if (amount > 0) this.availability = true;
+    }
+
+    public Book(){
+        super();
+    }
 
     public String getTitle() {
         return title;

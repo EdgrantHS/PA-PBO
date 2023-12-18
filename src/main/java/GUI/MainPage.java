@@ -4,6 +4,8 @@ import GUI.SubGUIModel.RefreshButton;
 import Model.Book;
 import GUI.SubGUIModel.NavigationBar;
 import ProgramLogic.BookController;
+import ProgramLogic.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -18,18 +20,34 @@ public class MainPage implements Displayable {
     private int itemsPerPage = 10;
     private int currentPage = 1;
 
-
     // UI Components
     private JLabel pageLabel;
     private JButton prevButton;
     private JButton nextButton;
     private JPanel booksPanel;
     private JFrame frame;
+    private PaginationController paginationController;
 
     /*----------------------------------------------------------------------------------------------------------------*/
+
     @Override
     public void display() {
         books = BookController.getListBook();
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+
 
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Main Page");
@@ -39,42 +57,42 @@ public class MainPage implements Displayable {
             NavigationBar navigationBar = new NavigationBar(frame);
             frame.getContentPane().add(navigationBar, BorderLayout.NORTH);
 
-            // Main content panel
             booksPanel = new JPanel();
             booksPanel.setLayout(new BoxLayout(booksPanel, BoxLayout.Y_AXIS));
             frame.getContentPane().add(new JScrollPane(booksPanel), BorderLayout.CENTER);
 
-            // Refresh button
             RefreshButton refreshButton = new RefreshButton(frame, MainPage.class);
             JPanel refreshButtonPanel = refreshButton.create();
             frame.getContentPane().add(refreshButtonPanel, BorderLayout.EAST);
 
-            // Pagination controls
             JPanel paginationPanel = new JPanel();
-            prevButton = new JButton("< Previous");
-            nextButton = new JButton("Next >");
-            pageLabel = new JLabel();
+            JButton prevButton = new JButton("< Previous");
+            JButton nextButton = new JButton("Next >");
+            JLabel pageLabel = new JLabel();
 
-            prevButton.addActionListener(e -> changePage(-1));
-            nextButton.addActionListener(e -> changePage(1));
+            paginationController = new PaginationController(10) {
+                @Override
+                protected void onPageChange() {
+                    loadBooks();
+                }
+            };
+            paginationController.setTotalItems(books.size());
+            paginationController.setupPaginationControls(prevButton, nextButton, pageLabel);
 
             paginationPanel.add(prevButton);
             paginationPanel.add(pageLabel);
             paginationPanel.add(nextButton);
             frame.getContentPane().add(paginationPanel, BorderLayout.SOUTH);
 
-            // Initial book load
             loadBooks();
-
             frame.setVisible(true);
         });
     }
 
     private void loadBooks() {
         booksPanel.removeAll();
-
-        int start = (currentPage - 1) * itemsPerPage;
-        int end = Math.min(start + itemsPerPage, books.size());
+        int start = paginationController.getCurrentPageStartIndex();
+        int end = Math.min(start + paginationController.getItemsPerPage(), books.size());
 
         for (int i = start; i < end; i++) {
             Book book = books.get(i);
@@ -89,28 +107,11 @@ public class MainPage implements Displayable {
             booksPanel.add(bookPanel);
         }
 
-        pageLabel.setText("Page " + currentPage + " of " + ((books.size() - 1) / itemsPerPage + 1));
-        prevButton.setEnabled(currentPage > 1);
-        nextButton.setEnabled(end < books.size());
-
         booksPanel.revalidate();
         booksPanel.repaint();
     }
-
-
-    private void changePage(int delta) {
-        int newPage = currentPage + delta;
-        int pageCount = books.size() / itemsPerPage + 1;
-
-        if (newPage > 0 && newPage <= pageCount) {
-            currentPage = newPage;
-            loadBooks();
-        }
-    }
-
 
     private void bookDetail(int bookId) {
         Displayable.movePage(frame, new RentBookPage());
     }
 }
-
