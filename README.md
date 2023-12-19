@@ -29,10 +29,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 4. Run the project
 
-## Running the tests
-
-To run the automated tests for this system, use the following command:
-
 ## Product
 
 1. Login Page
