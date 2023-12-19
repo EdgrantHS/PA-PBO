@@ -7,7 +7,7 @@ import ProgramLogic.AccountController;
 import javax.swing.*;
 
 /**
- * Represents the register page of the application (Singleton).
+ * Represents the register page of the application.
  *
  * @author Edgrant Henderson Suryajaya
  */

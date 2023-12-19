@@ -11,6 +11,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the main page of the application.
+ * This page is used to display the books that are currently available.
+ * This page is accessible by all users.
+ * This page is accessible from the navigation bar.
+ *
+ */
 public class MainPage implements Displayable {
 
     // Assume these are somehow populated with data from your data source

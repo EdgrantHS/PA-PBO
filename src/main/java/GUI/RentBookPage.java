@@ -7,7 +7,7 @@ import ProgramLogic.BorrowController;
 import javax.swing.*;
 
 /**
- * Represents the rent book page of the application (Singleton).
+ * Represents the rent book page of the application.
  *
  * @author Edgrant Henderson Suryajaya
  */

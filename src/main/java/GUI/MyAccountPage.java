@@ -5,6 +5,13 @@ import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.Row;
 import javax.swing.*;
 
+/**
+ * Represents the account page of the application.
+ * This page is used to display the details of the user's account.
+ * This page is only accessible by logged in users.
+ * This page is accessible from the navigation bar.
+ *
+ */
 public class MyAccountPage implements Displayable{
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     /**

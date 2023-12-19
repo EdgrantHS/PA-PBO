@@ -12,7 +12,7 @@ import java.util.List;
 import ProgramLogic.*;
 
 /**
- * Represents the rented books page of the application (Singleton).
+ * Represents the rented books page of the application.
  * This page is used to display the books that are currently rented by the user.
  * This page is only accessible by logged in users.
  * This page is accessible from the navigation bar.
