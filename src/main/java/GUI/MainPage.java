@@ -36,6 +36,11 @@ public class MainPage implements Displayable {
      */
     private PaginationController paginationController;
 
+    /**
+     * The selected book.
+     */
+    public static Book selectedBook;
+
     /*----------------------------------------------------------------------------------------------------------------*/
 
     /**
@@ -114,7 +119,10 @@ public class MainPage implements Displayable {
             bookPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
             JLabel bookLabel = new JLabel(book.title + " by " + book.author);
             JButton detailButton = new JButton("Details");
-            detailButton.addActionListener(e -> bookDetail(book.id));
+            detailButton.addActionListener(e -> {
+                bookDetail(book.id);
+                selectedBook = book;
+            });
 
             bookPanel.add(bookLabel);
             bookPanel.add(detailButton);

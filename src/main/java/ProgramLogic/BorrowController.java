@@ -1,8 +1,9 @@
 package ProgramLogic;
 
-import Model.Borrow;
+import Model.*;
 import com.mongodb.client.MongoCollection;
 import db.MongoDB;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -64,5 +65,14 @@ public class BorrowController {
     public static List<Borrow> handleGetBook() {
         //logika handle get book di sini
         return collection.find().into(new ArrayList<>());
+    }
+
+    /**
+     * Handles the borrow book.
+     * @return
+     */
+    public static boolean borrowBook(String returnDateString, Account loggedAccount, Book selectedBook){
+        //logika handle borrow book di sini
+        return true;
     }
 }

@@ -56,7 +56,7 @@ public class RentBookPage implements Displayable {
         }
 
         //borrow the book
-        // BorrowController.borrowBook(returnDateString, LoginPage.loggedAccount, BookPage.selectedBook);
+        BorrowController.borrowBook(returnDateString, LoginPage.loggedAccount, MainPage.selectedBook);
 
         Displayable.movePage(frame, new MainPage());
     }
