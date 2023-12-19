@@ -2,12 +2,18 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
+import Model.Account;
+import Model.Borrow;
+import ProgramLogic.AccountController;
+import ProgramLogic.BorrowController;
+import com.mongodb.client.MongoCollection;
 import com.sun.tools.javac.Main;
+import db.MongoDB;
 
 import javax.swing.*;
 
 /**
- * Represents the rent book page of the application (Singleton).
+ * Represents the rent book page of the application.
  *
  * @author Edgrant Henderson Suryajaya
  */
@@ -15,7 +21,7 @@ public class RentBookPage implements Displayable {
 
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     //editable Text
-
+    public static MongoCollection<Borrow> collection = MongoDB.getDatabaseInstance().getCollection("Borrow", Borrow.class);
     private TextField returnDate;
 
     /*----------------------------------------------------------------------------------------------------------------*/
@@ -52,6 +58,8 @@ public class RentBookPage implements Displayable {
         }
 
         // Register logic here
+        // DAPET BOOOK ID DR MANA, silakan dipikirkan sendiri
+        BorrowController.rentBook(AccountController.loggedInAccount.id, MainPage.clickedBookId, returnDateString);
         Displayable.movePage(frame, new MainPage());
     }
 }

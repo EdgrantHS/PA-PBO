@@ -1,7 +1,11 @@
 package ProgramLogic;
 
+import Model.Account;
+import Model.Book;
 import Model.Borrow;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import db.MongoDB;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -20,8 +24,15 @@ public class BorrowController {
             // Check if the book is available
             if (isBookAvailable(bookId)) {
                 // Perform booking
-                Borrow borrow = new Borrow(accountId, bookId, getTimestampFromString(returnDate));
-                collection.insertOne(borrow);
+                Borrow borrow = new Borrow();
+                borrow.setAccountId(accountId);
+                borrow.setBookId(bookId);
+                borrow.setReturnTime(returnDate);
+                if (collection.insertOne(borrow).wasAcknowledged()) {
+                    System.out.println("New Borrow: ");
+                } else {
+                    System.out.println("Insertion failed");
+                }
                 return true;
             } else {
                 System.out.println("Book is not available.");
@@ -37,7 +48,8 @@ public class BorrowController {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date currentDate = new Date();
-            Date parsedReturnDate = dateFormat.parse(returnDate);
+            Date parsedReturnDate = dateFormat.
+                    parse(returnDate);
             return parsedReturnDate.after(currentDate);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -61,8 +73,15 @@ public class BorrowController {
         return null;
     }
 
-    public static List<Borrow> handleGetBook() {
-        //logika handle get book di sini
-        return collection.find().into(new ArrayList<>());
+    public static List<Borrow> handleGetBorrowedBook(int accountId) {
+        List<Borrow> borrowList = new ArrayList<>();
+        FindIterable<Borrow> listBorrowed = collection.find(Filters.eq("accountId", accountId));
+
+        listBorrowed.forEach(b-> {
+            borrowList.add(b);
+        });
+
+        borrowList.forEach(System.out::println);
+        return borrowList;
     }
 }

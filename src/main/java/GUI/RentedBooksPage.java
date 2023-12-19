@@ -11,7 +11,8 @@ import java.util.List;
 
 import ProgramLogic.*;
 
-
+/**
+ * Represents the rented books page of the application.**/
 public class RentedBooksPage implements Displayable {
     private List<Borrow> borrows = new ArrayList<>();
     private PaginationController paginationController;
@@ -20,16 +21,17 @@ public class RentedBooksPage implements Displayable {
 
     @Override
     public void display() {
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
+//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
 
+        borrows = BorrowController.handleGetBorrowedBook(AccountController.loggedInAccount.id);
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Rented Books Page");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

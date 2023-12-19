@@ -11,6 +11,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the main page of the application.
+ * This page is used to display the books that are currently available.
+ * This page is accessible by all users.
+ * This page is accessible from the navigation bar.
+ *
+ */
 public class MainPage implements Displayable {
 
     // Assume these are somehow populated with data from your data source
@@ -28,26 +35,28 @@ public class MainPage implements Displayable {
     private JFrame frame;
     private PaginationController paginationController;
 
+    public static int clickedBookId = -1;
+
     /*----------------------------------------------------------------------------------------------------------------*/
 
     @Override
     public void display() {
         books = BookController.getListBook();
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
+//        BookController.generateBook();
 
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Main Page");
@@ -112,6 +121,8 @@ public class MainPage implements Displayable {
     }
 
     private void bookDetail(int bookId) {
+        clickedBookId = bookId;
+        System.out.println(clickedBookId);
         Displayable.movePage(frame, new RentBookPage());
     }
 }

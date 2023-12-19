@@ -14,7 +14,7 @@ import java.util.Map;
 public class AccountController {
     public static MongoCollection<Account> collection = MongoDB.getDatabaseInstance().getCollection("Account", Account.class);
     public static Map<String, Account> dataBaseAcc = new HashMap<>();
-    private static Account loggedInAccount;
+    public static Account loggedInAccount;
 
     public static boolean authenticate(String username, String password) {
         Account exist = collection.find(Filters.and(
