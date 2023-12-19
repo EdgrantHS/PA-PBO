@@ -36,8 +36,8 @@ To run the automated tests for this system, use the following command:
 ## Product
 
 1. Login Page
-![login](https://github.com/EdgrantHS/PA-PBO/assets/144258090/e374024f-6140-4a85-bce2-fefa252e8a40)
-![login 2](https://github.com/EdgrantHS/PA-PBO/assets/144258090/4b6d3c6d-85bf-436c-9a03-9faeb5b3d6e0)
+![login](https://github.com/EdgrantHS/PA-PBO/assets/144258090/e374024f-6140-4a85-bce2-fefa252e8a40) 
+![login 3](https://github.com/EdgrantHS/PA-PBO/assets/144258090/3b027737-3180-41f1-aa95-00ac3f7fd430)
 
 2. Register Page
 ![register 1](https://github.com/EdgrantHS/PA-PBO/assets/144258090/6c375ce2-9148-4da5-bc01-f09f72cecb63)
@@ -50,7 +50,7 @@ To run the automated tests for this system, use the following command:
 ![acc page](https://github.com/EdgrantHS/PA-PBO/assets/144258090/2062ca99-188a-4d76-be8f-1a80b20d98da)
 
 5. Rent Book Page
-![renting book](https://github.com/EdgrantHS/PA-PBO/assets/144258090/98ce0fcb-a6e5-4c97-8250-306d006b1900)
+![renting book](https://github.com/EdgrantHS/PA-PBO/assets/144258090/a743136b-93e0-41ab-a45c-ad08f61c8894)
 ![renting book 2](https://github.com/EdgrantHS/PA-PBO/assets/144258090/9df0e4d0-8133-454f-9910-893d92f2e17f)
 
 6. Rented Book Page
