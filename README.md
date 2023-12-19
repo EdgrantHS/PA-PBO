@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Java 8 or higher
 - MongoDB
-- Gradle  
+- Gradle
 
 ### Installing
 
@@ -33,6 +33,17 @@ These instructions will get you a copy of the project up and running on your loc
 ## Running the tests
 
 To run the automated tests for this system, use the following command:
+
+## Database
+
+1. Account
+![messageImage_1702985045717](https://github.com/EdgrantHS/PA-PBO/assets/144258090/cc4b5306-96ce-4d42-993e-797c74e07553)
+
+2. Books
+![messageImage_1702985059632](https://github.com/EdgrantHS/PA-PBO/assets/144258090/b1be6589-9839-40de-a435-067756f9a99c)
+
+3. Borrow
+![messageImage_1702985069898](https://github.com/EdgrantHS/PA-PBO/assets/144258090/bf7ce70d-33c0-4298-8c6c-8795a786ac95)
 
 ## Built With
 

@@ -18,6 +18,13 @@ import java.util.List;
  * This page is accessible from the navigation bar.
  *
  */
+/**
+ * Represents the main page of the application.
+ * This page is used to display the books that are currently available.
+ * This page is accessible by all users.
+ * This page is accessible from the navigation bar.
+ *
+ */
 public class MainPage implements Displayable {
 
     // Assume these are somehow populated with data from your data source
@@ -43,10 +50,7 @@ public class MainPage implements Displayable {
      */
     private PaginationController paginationController;
 
-    /**
-     * The selected book.
-     */
-    public static Book selectedBook;
+    public static int clickedBookId = -1;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -111,7 +115,7 @@ public class MainPage implements Displayable {
             JButton detailButton = new JButton("Details");
             detailButton.addActionListener(e -> {
                 bookDetail(book.id);
-                selectedBook = book;
+                clickedBookId = book.id;
             });
 
             bookPanel.add(bookLabel);
@@ -129,6 +133,8 @@ public class MainPage implements Displayable {
      * @param bookId The id of the book to display.
      */
     private void bookDetail(int bookId) {
+        clickedBookId = bookId;
+        System.out.println(clickedBookId);
         Displayable.movePage(frame, new RentBookPage());
     }
 }

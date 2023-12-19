@@ -51,6 +51,7 @@ public class BookController {
         }
     }
 
+
     // dummy list book, call only for once
     public static void generateBook() {
         List<Book> bookList = new ArrayList<>();
@@ -99,17 +100,7 @@ public class BookController {
         FindIterable<Book> result = collection.find();
 
         result.forEach(b-> {
-            System.out.println(b);
-
-            Book book = new Book();
-            book.title = b.getTitle();
-            book.author = b.getAuthor();
-            book.publisher = b.getPublisher();
-            book.publishTime = b.getPublishTime();
-            book.setAmount(b.getAmount());
-            book.setAvailability(b.isAvailability());
-
-            bookList.add(book);
+            bookList.add(b);
         });
         return bookList;
     }

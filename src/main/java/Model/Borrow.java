@@ -8,16 +8,43 @@ public class Borrow extends Serializable {
     public int accountId;
     public int bookId;
     public BorrowStatus borrowStatus;
-    private Timestamp borrowTime;
-    private Timestamp returnTime;
+    private String borrowTime;
+    private String returnTime;
 
-    public Borrow(int accountId, int bookId, Timestamp returnTime) {
+    public Borrow() {
         super();
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
+    }
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(int bookId) {
         this.bookId = bookId;
+    }
+
+    public BorrowStatus getBorrowStatus() {
+        return borrowStatus;
+    }
+
+    public void setBorrowStatus(BorrowStatus borrowStatus) {
+        this.borrowStatus = borrowStatus;
+    }
+
+    public void setBorrowTime(String borrowTime) {
+        this.borrowTime = borrowTime;
+    }
+
+    public void setReturnTime(String returnTime) {
         this.returnTime = returnTime;
-        this.borrowTime = new Timestamp(System.currentTimeMillis());
-        this.borrowStatus = BorrowStatus.BORROWED;
     }
 
 
@@ -29,11 +56,11 @@ public class Borrow extends Serializable {
         this.borrowStatus = BorrowStatus.LOST;
     }
 
-    public Timestamp getBorrowTime() {
+    public String getBorrowTime() {
         return this.borrowTime;
     }
 
-    public Timestamp getReturnTime() {
+    public String getReturnTime() {
         return this.returnTime;
     }
 }
