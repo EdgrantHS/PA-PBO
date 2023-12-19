@@ -16,20 +16,31 @@ public class MainPage implements Displayable {
     // Assume these are somehow populated with data from your data source
 
     /*-----------------------------------------------Variables--------------------------------------------------------*/
+    /**
+     * The list of books.
+     */
     public static List<Book> books = new ArrayList<>(); // This should be populated with your books data
-    private int itemsPerPage = 10;
-    private int currentPage = 1;
 
-    // UI Components
-    private JLabel pageLabel;
-    private JButton prevButton;
-    private JButton nextButton;
+    /**
+     * The panel that contains the books.
+     */
     private JPanel booksPanel;
+
+    /**
+     * The frame that contains the main page.
+     */
     private JFrame frame;
+
+    /**
+     * The pagination controller.
+     */
     private PaginationController paginationController;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the main page.
+     */
     @Override
     public void display() {
         books = BookController.getListBook();
@@ -89,6 +100,9 @@ public class MainPage implements Displayable {
         });
     }
 
+    /**
+     * Loads the books into the books panel.
+     */
     private void loadBooks() {
         booksPanel.removeAll();
         int start = paginationController.getCurrentPageStartIndex();
@@ -111,6 +125,11 @@ public class MainPage implements Displayable {
         booksPanel.repaint();
     }
 
+    /**
+     * Displays the book details page.
+     *
+     * @param bookId The id of the book to display.
+     */
     private void bookDetail(int bookId) {
         Displayable.movePage(frame, new RentBookPage());
     }

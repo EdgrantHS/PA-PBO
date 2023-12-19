@@ -2,6 +2,7 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
+import Model.Account;
 import ProgramLogic.AccountController;
 
 import javax.swing.*;
@@ -13,13 +14,27 @@ import javax.swing.*;
  */
 public class LoginPage implements Displayable{
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    //editable Text
-    // jangan lupa tambahin static account untuk nyimpen account yang kelog in
+
+    /**
+     * The username TextFields.
+     */
     private TextField username;
+    
+    /**
+     * the password TextField.
+     */
     private TextField password;
+
+    /**
+     * The logged in account.
+     */
+    public static Account loggedAccount;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the login page.
+     */
     public void display() {
         SwingUtilities.invokeLater(() -> {
             BasePage basePage = new BasePage("Login Page", "no menu");
@@ -57,6 +72,13 @@ public class LoginPage implements Displayable{
         });
     }
 
+    /**
+     * Attempts to login the user.
+     * If the login is successful, the user is redirected to the main page.
+     * If the login is unsuccessful, an error message is displayed.
+     * 
+     * @param frame
+     */
     private void login(JFrame frame) {
         String usernameString = username.getText().trim();
         String passwordString = password.getText().trim();
@@ -69,6 +91,9 @@ public class LoginPage implements Displayable{
         if (AccountController.authenticate(usernameString, passwordString)) {
             // Successful login
             JOptionPane.showMessageDialog(null, "Login successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            // ini mungkin salah?
+            loggedAccount = AccountController.getAccountDetails();
             Displayable.movePage(frame, new MainPage());
         } else {
             // Failed login
@@ -76,6 +101,11 @@ public class LoginPage implements Displayable{
         }
     }
 
+    /**
+     * Redirects the user to the register page.
+     * 
+     * @param frame
+     */
     private void register(JFrame frame) {
         Displayable.movePage(frame, new RegisterPage());
     }

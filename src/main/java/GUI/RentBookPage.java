@@ -2,7 +2,7 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
-import com.sun.tools.javac.Main;
+import ProgramLogic.BorrowController;
 
 import javax.swing.*;
 
@@ -32,17 +32,21 @@ public class RentBookPage implements Displayable {
             basePage.add(returnDate.create());
 
             // Login button
-            JButton loginButton = new JButton("Submit");
-            loginButton.addActionListener(e -> handleBook(basePage.getFrame()));
-            basePage.add(loginButton);
+            JButton submitButton = new JButton("Submit");
+            submitButton.addActionListener(e -> handleBorrowBook(basePage.getFrame()));
+            basePage.add(submitButton);
 
             basePage.render();
         });
     }
 
 
-    private void handleBook(JFrame frame) {
-        // Check if the username or password fields are empty
+    /**
+     * Handles the login button.
+     *
+     * @param frame The current JFrame.
+     */
+    private void handleBorrowBook(JFrame frame) {
         String returnDateString = returnDate.getText().trim();
 
         //if input is empty
@@ -51,7 +55,9 @@ public class RentBookPage implements Displayable {
             return;
         }
 
-        // Register logic here
+        //borrow the book
+        // BorrowController.borrowBook(returnDateString, LoginPage.loggedAccount, BookPage.selectedBook);
+
         Displayable.movePage(frame, new MainPage());
     }
 }

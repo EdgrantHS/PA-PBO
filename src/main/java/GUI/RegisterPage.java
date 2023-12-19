@@ -15,14 +15,36 @@ public class RegisterPage implements Displayable {
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     //editable Text
 
+    /**
+     * Represents the username TextField.
+     */
     private TextField username;
+
+    /**
+     * Represents the name TextField.
+     */
     private TextField name;
+
+    /**
+     * Represents the email TextField.
+     */
     private TextField email;
+
+    /**
+     * Represents the password TextField.
+     */
     private TextField password;
+
+    /**
+     * Represents the password confirmation TextField.
+     */
     private TextField passwordConfirm;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the register page.
+     */
     public void display() {
         SwingUtilities.invokeLater(() -> {
             BasePage basePage = new BasePage("Register Page", "no menu");
@@ -52,7 +74,11 @@ public class RegisterPage implements Displayable {
         });
     }
 
-
+    /**
+     * Attempts to register a new account.
+     *
+     * @param frame The current JFrame.
+     */
     private void register(JFrame frame) {
         String usernameString = username.getText().trim();
         String nameString = name.getText().trim();

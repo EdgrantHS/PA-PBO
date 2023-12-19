@@ -1,24 +1,37 @@
 package GUI;
 
 import Model.Account;
-import ProgramLogic.AccountController;
-
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.Row;
-import ProgramLogic.AccountController;
-
 import javax.swing.*;
 
 public class MyAccountPage implements Displayable{
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    //editable Text
+    /**
+     * The username text.
+     */
     public String usernameText;
+
+    /**
+     * The name text.
+     */
     public String nameText;
+
+    /**
+     * The email text.
+     */
     public String emailText;
+
+    /**
+     * The rating text.
+     */
     public int ratingText;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the account page.
+     */
     public MyAccountPage(Account account) {
         // Set the details from the account object
         this.usernameText = account.getUsername();
@@ -27,6 +40,10 @@ public class MyAccountPage implements Displayable{
         this.ratingText = account.rating;
     }
 
+
+    /**
+     * Displays the account page.
+     */
     @Override
     public void display() {
         SwingUtilities.invokeLater(() -> {
