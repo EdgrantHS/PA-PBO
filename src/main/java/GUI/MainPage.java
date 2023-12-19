@@ -26,7 +26,7 @@ public class MainPage implements Displayable {
     /**
      * The list of books.
      */
-    public static List<Book> books = new ArrayList<>(); // This should be populated with your books data
+    public static List<Book> books = BookController.getListBook();
 
     /**
      * The panel that contains the books.
@@ -55,23 +55,6 @@ public class MainPage implements Displayable {
      */
     @Override
     public void display() {
-        books = BookController.getListBook();
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-
-
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Main Page");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

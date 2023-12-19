@@ -8,7 +8,7 @@ import ProgramLogic.AccountController;
 import javax.swing.*;
 
 /**
- * Represents the login page of the application (Singleton).
+ * Represents the login page of the application.
  *
  * @author Edgrant Henderson Suryajaya
  */

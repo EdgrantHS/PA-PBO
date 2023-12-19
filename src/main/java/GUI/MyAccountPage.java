@@ -56,8 +56,6 @@ public class MyAccountPage implements Displayable{
         SwingUtilities.invokeLater(() -> {
             BasePage basePage = new BasePage("Account Page");
 
-            /*--------------------------------------------------------------------------------------------------------*/
-            // Component setup
             Row usernameRow = new Row("Username: ", usernameText);
             basePage.add(usernameRow.create());
 

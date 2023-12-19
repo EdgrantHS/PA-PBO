@@ -15,7 +15,7 @@ public class BorrowController {
 
     public static MongoCollection<Borrow> collection = MongoDB.getDatabaseInstance().getCollection("Borrow", Borrow.class);
 
-    public static boolean rentBook(int accountId, int bookId, String returnDate) {
+    public static boolean borrowBook(int accountId, int bookId, String returnDate) {
         // Check if returnDate > current date
         if (isReturnDateValid(returnDate)) {
             // Check if the book is available
@@ -62,17 +62,8 @@ public class BorrowController {
         return null;
     }
 
-    public static List<Borrow> handleGetBook() {
+    public static List<Borrow> getListBorrow() {
         //logika handle get book di sini
         return collection.find().into(new ArrayList<>());
-    }
-
-    /**
-     * Handles the borrow book.
-     * @return
-     */
-    public static boolean borrowBook(String returnDateString, Account loggedAccount, Book selectedBook){
-        //logika handle borrow book di sini
-        return true;
     }
 }

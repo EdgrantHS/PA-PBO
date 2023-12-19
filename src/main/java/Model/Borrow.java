@@ -1,5 +1,7 @@
 package Model;
 
+import org.bson.codecs.pojo.annotations.BsonCreator;
+
 import java.sql.Timestamp;
 
 public class Borrow extends Serializable {
@@ -17,6 +19,7 @@ public class Borrow extends Serializable {
         this.borrowTime = new Timestamp(System.currentTimeMillis());
         this.borrowStatus = BorrowStatus.BORROWED;
     }
+
 
     public void bookIsReturned() {
         this.borrowStatus = BorrowStatus.RETURNED;
