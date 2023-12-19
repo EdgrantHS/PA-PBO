@@ -19,7 +19,7 @@ public class BorrowController {
 
     public static MongoCollection<Borrow> collection = MongoDB.getDatabaseInstance().getCollection("Borrow", Borrow.class);
 
-    public static boolean borrowBook(int accountId, int bookId, String returnDate) {
+    public static boolean rentBook(int accountId, int bookId, String returnDate) {
         // Check if returnDate > current date
         if (isReturnDateValid(returnDate)) {
             // Check if the book is available

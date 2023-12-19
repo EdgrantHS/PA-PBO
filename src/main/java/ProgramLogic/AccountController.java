@@ -37,6 +37,11 @@ public class AccountController {
         return loggedInAccount;
     }
 
+    public static Account getAccountByUsername(String username) {
+        // Retrieve account details based on the username
+        return collection.find(Filters.eq("username", username)).first();
+    }
+
     public static boolean register(String username, String name, String email, String password) {
         boolean exist = collection.find(Filters.and(
                 Filters.eq("username", username),

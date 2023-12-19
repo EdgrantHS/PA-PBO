@@ -22,7 +22,7 @@ public class RentedBooksPage implements Displayable {
     /**
      * The list of borrows.
      */
-    private final List<Borrow> borrows = BorrowController.getListBorrow();
+    private final List<Borrow> borrows = BorrowController.handleGetBorrowedBook(AccountController.loggedInAccount.id);
 
     /**
      * The pagination controller.
@@ -45,17 +45,6 @@ public class RentedBooksPage implements Displayable {
      */
     @Override
     public void display() {
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-
-        borrows = BorrowController.handleGetBorrowedBook(AccountController.loggedInAccount.id);
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Rented Books Page");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

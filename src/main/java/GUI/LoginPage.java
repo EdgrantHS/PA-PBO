@@ -25,10 +25,6 @@ public class LoginPage implements Displayable{
      */
     private TextField password;
 
-    /**
-     * The logged in account.
-     */
-    public static Account loggedAccount;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
@@ -40,10 +36,10 @@ public class LoginPage implements Displayable{
             BasePage basePage = new BasePage("Login Page", "no menu");
 
             // Username and Password TextFields
-            username = new TextField("username: ");
+            username = new TextField("Username: ");
             basePage.add(username.create());
 
-            password = new TextField("password: ");
+            password = new TextField("Password: ");
             basePage.add(password.create());
 
             // padding
@@ -58,9 +54,7 @@ public class LoginPage implements Displayable{
             basePage.add(loginButton);
 
             // padding
-            JPanel padding2 = new JPanel();
-            padding2.add(Box.createVerticalStrut(5));
-            basePage.add(padding2);
+            basePage.add(padding);
 
             // Register button
             JButton registerButton = new JButton("Register");
@@ -77,7 +71,7 @@ public class LoginPage implements Displayable{
      * If the login is successful, the user is redirected to the main page.
      * If the login is unsuccessful, an error message is displayed.
      * 
-     * @param frame
+     * @param frame The current JFrame.
      */
     private void login(JFrame frame) {
         String usernameString = username.getText().trim();
@@ -92,8 +86,8 @@ public class LoginPage implements Displayable{
             // Successful login
             JOptionPane.showMessageDialog(null, "Login successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-            // ini mungkin salah?
-            loggedAccount = AccountController.getAccountDetails();
+            // Mencatat Id Account yang terlogged in
+            AccountController.loggedInAccount = AccountController.getAccountByUsername(usernameString);
             Displayable.movePage(frame, new MainPage());
         } else {
             // Failed login
@@ -104,7 +98,8 @@ public class LoginPage implements Displayable{
     /**
      * Redirects the user to the register page.
      * 
-     * @param frame
+     * @param frame The current JFrame.
+     *
      */
     private void register(JFrame frame) {
         Displayable.movePage(frame, new RegisterPage());
