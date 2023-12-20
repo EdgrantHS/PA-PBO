@@ -15,44 +15,93 @@ public class RegisterPage implements Displayable {
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     //editable Text
 
+    /**
+     * Represents the username TextField.
+     */
     private TextField username;
+
+    /**
+     * Represents the name TextField.
+     */
     private TextField name;
+
+    /**
+     * Represents the email TextField.
+     */
     private TextField email;
+
+    /**
+     * Represents the password TextField.
+     */
     private TextField password;
+
+    /**
+     * Represents the password confirmation TextField.
+     */
     private TextField passwordConfirm;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the register page.
+     */
     public void display() {
         SwingUtilities.invokeLater(() -> {
             BasePage basePage = new BasePage("Register Page", "no menu");
 
             // Username and Password TextFields
-            username = new TextField("username: ");
+            username = new TextField(       "Username:                 ");
             basePage.add(username.create());
 
-            name = new TextField("Full Name: ");
+            // padding
+            JPanel paddingSmol = new JPanel();
+            paddingSmol.add(Box.createVerticalStrut(5));
+            basePage.add(paddingSmol);
+
+            name = new TextField(           "Full Name:                  ");
             basePage.add(name.create());
 
-            email = new TextField("email: ");
+            // padding
+            basePage.add(paddingSmol);
+
+            email = new TextField(          "Email:                          ");
             basePage.add(email.create());
 
-            password = new TextField("password: ");
+            // padding
+            basePage.add(paddingSmol);
+
+            password = new TextField(       "Password:                 ");
             basePage.add(password.create());
 
-            passwordConfirm = new TextField("confirm password: ");
+            // padding
+            basePage.add(paddingSmol);
+
+            passwordConfirm = new TextField("Confirm Password: ");
             basePage.add(passwordConfirm.create());
+
+            // padding
+            basePage.add(paddingSmol);
+
+            // padding
+            JPanel paddingBig = new JPanel();
+            paddingBig.add(Box.createVerticalStrut(20));
+            basePage.add(paddingBig);
 
             // Login button
             JButton loginButton = new JButton("Register");
             loginButton.addActionListener(e -> register(basePage.getFrame()));
             basePage.add(loginButton);
 
+
             basePage.render();
         });
     }
 
-
+    /**
+     * Attempts to register a new account.
+     *
+     * @param frame The current JFrame.
+     */
     private void register(JFrame frame) {
         String usernameString = username.getText().trim();
         String nameString = name.getText().trim();

@@ -1,8 +1,6 @@
 package GUI;
 
 import Model.Account;
-import ProgramLogic.AccountController;
-
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.Row;
 /**
@@ -15,16 +13,44 @@ import GUI.SubGUIModel.Row;
 
 import javax.swing.*;
 
+<<<<<<< HEAD
 public class MyAccountPage implements Displayable {
+=======
+/**
+ * Represents the account page of the application.
+ * This page is used to display the details of the user's account.
+ * This page is only accessible by logged in users.
+ * This page is accessible from the navigation bar.
+ *
+ */
+public class MyAccountPage implements Displayable{
+>>>>>>> a7f57236a619a86d932837d17068fdf4d2ff02e5
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    //editable Text
+    /**
+     * The username text.
+     */
     public String usernameText;
+
+    /**
+     * The name text.
+     */
     public String nameText;
+
+    /**
+     * The email text.
+     */
     public String emailText;
+
+    /**
+     * The rating text.
+     */
     public int ratingText;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the account page.
+     */
     public MyAccountPage(Account account) {
         // Set the details from the account object
         this.usernameText = account.getUsername();
@@ -33,13 +59,15 @@ public class MyAccountPage implements Displayable {
         this.ratingText = account.rating;
     }
 
+
+    /**
+     * Displays the account page.
+     */
     @Override
     public void display() {
         SwingUtilities.invokeLater(() -> {
             BasePage basePage = new BasePage("Account Page");
 
-            /*--------------------------------------------------------------------------------------------------------*/
-            // Component setup
             Row usernameRow = new Row("Username: ", usernameText);
             basePage.add(usernameRow.create());
 

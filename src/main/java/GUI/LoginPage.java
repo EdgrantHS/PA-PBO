@@ -2,33 +2,44 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
+import Model.Account;
 import ProgramLogic.AccountController;
 
 import javax.swing.*;
 
 /**
- * Represents the login page of the application (Singleton).
+ * Represents the login page of the application.
  *
  * @author Edgrant Henderson Suryajaya
  */
 public class LoginPage implements Displayable {
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    //editable Text
-    // jangan lupa tambahin static account untuk nyimpen account yang kelog in
+
+    /**
+     * The username TextFields.
+     */
     private TextField username;
+    
+    /**
+     * the password TextField.
+     */
     private TextField password;
+
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the login page.
+     */
     public void display() {
         SwingUtilities.invokeLater(() -> {
             BasePage basePage = new BasePage("Login Page", "no menu");
 
             // Username and Password TextFields
-            username = new TextField("username: ");
+            username = new TextField("Username: ");
             basePage.add(username.create());
 
-            password = new TextField("password: ");
+            password = new TextField("Password: ");
             basePage.add(password.create());
 
             // padding
@@ -43,9 +54,7 @@ public class LoginPage implements Displayable {
             basePage.add(loginButton);
 
             // padding
-            JPanel padding2 = new JPanel();
-            padding2.add(Box.createVerticalStrut(5));
-            basePage.add(padding2);
+            basePage.add(padding);
 
             // Register button
             JButton registerButton = new JButton("Register");
@@ -57,6 +66,13 @@ public class LoginPage implements Displayable {
         });
     }
 
+    /**
+     * Attempts to login the user.
+     * If the login is successful, the user is redirected to the main page.
+     * If the login is unsuccessful, an error message is displayed.
+     * 
+     * @param frame The current JFrame.
+     */
     private void login(JFrame frame) {
         String usernameString = username.getText().trim();
         String passwordString = password.getText().trim();
@@ -69,6 +85,9 @@ public class LoginPage implements Displayable {
         if (AccountController.authenticate(usernameString, passwordString)) {
             // Successful login
             JOptionPane.showMessageDialog(null, "Login successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            // Mencatat Id Account yang terlogged in
+            AccountController.loggedInAccount = AccountController.getAccountByUsername(usernameString);
             Displayable.movePage(frame, new MainPage());
         } else {
             // Failed login
@@ -76,6 +95,12 @@ public class LoginPage implements Displayable {
         }
     }
 
+    /**
+     * Redirects the user to the register page.
+     * 
+     * @param frame The current JFrame.
+     *
+     */
     private void register(JFrame frame) {
         Displayable.movePage(frame, new RegisterPage());
     }

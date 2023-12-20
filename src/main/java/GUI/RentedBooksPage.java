@@ -14,26 +14,42 @@ import ProgramLogic.*;
 
 /**
  * Represents the rented books page of the application.
+<<<<<<< HEAD
  **/
+=======
+ * This page is used to display the books that are currently rented by the user.
+ * This page is only accessible by logged in users.
+ * This page is accessible from the navigation bar.
+ * 
+ */
+>>>>>>> a7f57236a619a86d932837d17068fdf4d2ff02e5
 public class RentedBooksPage implements Displayable {
-    private List<Borrow> borrows = new ArrayList<>();
+    /**
+     * The list of borrows.
+     */
+    private final List<Borrow> borrows = BorrowController.handleGetBorrowedBook(AccountController.loggedInAccount.id);
+
+    /**
+     * The pagination controller.
+     */
     private PaginationController paginationController;
+
+    /**
+     * The panel that contains the borrows.
+     */
     private JPanel borrowsPanel;
+
+    /**
+     * The frame that contains the rented books page.
+     */
     private JFrame frame;
 
+
+    /**
+     * Displays the rented books page.
+     */
     @Override
     public void display() {
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-//        borrows.add(new Borrow(1, 1, new Timestamp(System.currentTimeMillis())));
-
-        borrows = BorrowController.handleGetBorrowedBook(AccountController.loggedInAccount.id);
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Rented Books Page");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,6 +90,9 @@ public class RentedBooksPage implements Displayable {
         });
     }
 
+    /**
+     * Loads the borrows.
+     */
     private void loadBorrows() {
         borrowsPanel.removeAll();
         int start = paginationController.getCurrentPageStartIndex();

@@ -87,6 +87,7 @@ public class AccountController {
         return loggedInAccount;
     }
 
+<<<<<<< HEAD
     /**
      * Registers a new account with the specified username, name, email, and password.
      *
@@ -97,6 +98,13 @@ public class AccountController {
      * @return True if registration is successful, false otherwise (e.g., username already taken).
      * @author Phoebe Ivana
      */
+=======
+    public static Account getAccountByUsername(String username) {
+        // Retrieve account details based on the username
+        return collection.find(Filters.eq("username", username)).first();
+    }
+
+>>>>>>> a7f57236a619a86d932837d17068fdf4d2ff02e5
     public static boolean register(String username, String name, String email, String password) {
         boolean exist = collection.find(Filters.and(
                 Filters.eq("username", username),

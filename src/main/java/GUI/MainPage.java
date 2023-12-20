@@ -17,46 +17,47 @@ import java.util.List;
  * This page is accessible by all users.
  * This page is accessible from the navigation bar.
  */
+/**
+ * Represents the main page of the application.
+ * This page is used to display the books that are currently available.
+ * This page is accessible by all users.
+ * This page is accessible from the navigation bar.
+ *
+ */
 public class MainPage implements Displayable {
 
     // Assume these are somehow populated with data from your data source
 
     /*-----------------------------------------------Variables--------------------------------------------------------*/
-    public static List<Book> books = new ArrayList<>(); // This should be populated with your books data
-    private int itemsPerPage = 10;
-    private int currentPage = 1;
+    /**
+     * The list of books.
+     */
+    public static List<Book> books = BookController.getListBook();
 
-    // UI Components
-    private JLabel pageLabel;
-    private JButton prevButton;
-    private JButton nextButton;
+    /**
+     * The panel that contains the books.
+     */
     private JPanel booksPanel;
+
+    /**
+     * The frame that contains the main page.
+     */
     private JFrame frame;
+
+    /**
+     * The pagination controller.
+     */
     private PaginationController paginationController;
 
     public static int clickedBookId = -1;
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    /**
+     * Displays the main page.
+     */
     @Override
     public void display() {
-        books = BookController.getListBook();
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "2019" , 1));
-//        BookController.generateBook();
-
         SwingUtilities.invokeLater(() -> {
             frame = new JFrame("Main Page");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,6 +98,9 @@ public class MainPage implements Displayable {
         });
     }
 
+    /**
+     * Loads the books into the books panel.
+     */
     private void loadBooks() {
         booksPanel.removeAll();
         int start = paginationController.getCurrentPageStartIndex();
@@ -108,7 +112,10 @@ public class MainPage implements Displayable {
             bookPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
             JLabel bookLabel = new JLabel(book.title + " by " + book.author);
             JButton detailButton = new JButton("Details");
-            detailButton.addActionListener(e -> bookDetail(book.id));
+            detailButton.addActionListener(e -> {
+                bookDetail(book.id);
+                clickedBookId = book.id;
+            });
 
             bookPanel.add(bookLabel);
             bookPanel.add(detailButton);
@@ -119,6 +126,11 @@ public class MainPage implements Displayable {
         booksPanel.repaint();
     }
 
+    /**
+     * Displays the book details page.
+     *
+     * @param bookId The id of the book to display.
+     */
     private void bookDetail(int bookId) {
         clickedBookId = bookId;
         System.out.println(clickedBookId);
