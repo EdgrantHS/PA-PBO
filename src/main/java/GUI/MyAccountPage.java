@@ -13,9 +13,6 @@ import GUI.SubGUIModel.Row;
 
 import javax.swing.*;
 
-<<<<<<< HEAD
-public class MyAccountPage implements Displayable {
-=======
 /**
  * Represents the account page of the application.
  * This page is used to display the details of the user's account.
@@ -23,8 +20,7 @@ public class MyAccountPage implements Displayable {
  * This page is accessible from the navigation bar.
  *
  */
-public class MyAccountPage implements Displayable{
->>>>>>> a7f57236a619a86d932837d17068fdf4d2ff02e5
+public class MyAccountPage implements Displayable {
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     /**
      * The username text.
@@ -59,7 +55,6 @@ public class MyAccountPage implements Displayable{
         this.ratingText = account.rating;
     }
 
-
     /**
      * Displays the account page.
      */
@@ -83,5 +78,4 @@ public class MyAccountPage implements Displayable{
             basePage.render();
         });
     }
-
 }

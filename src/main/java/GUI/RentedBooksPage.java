@@ -6,23 +6,13 @@ import Model.Borrow;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import ProgramLogic.*;
 
 /**
  * Represents the rented books page of the application.
-<<<<<<< HEAD
- **/
-=======
- * This page is used to display the books that are currently rented by the user.
- * This page is only accessible by logged in users.
- * This page is accessible from the navigation bar.
- * 
  */
->>>>>>> a7f57236a619a86d932837d17068fdf4d2ff02e5
 public class RentedBooksPage implements Displayable {
     /**
      * The list of borrows.

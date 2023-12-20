@@ -3,7 +3,6 @@ package Model;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
-import java.sql.Timestamp;
 
 /**
  * The {@code Book} class represents a book with information such as title, author, publisher,
@@ -70,15 +69,12 @@ public class Book extends Serializable {
         if (amount > 0) this.availability = true;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Default constructor for the {@code Book} class.
      * <p>
      * Initializes the book with default values.
      * </p>
      */
->>>>>>> a7f57236a619a86d932837d17068fdf4d2ff02e5
     public Book() {
         super();
     }

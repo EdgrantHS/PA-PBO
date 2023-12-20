@@ -2,7 +2,6 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
-import Model.Account;
 import ProgramLogic.AccountController;
 
 import javax.swing.*;

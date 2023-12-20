@@ -1,8 +1,5 @@
 package Model;
 
-import org.bson.codecs.pojo.annotations.BsonCreator;
-
-import java.sql.Timestamp;
 
 /**
  * The {@code Borrow} class represents a borrowing transaction, containing information about

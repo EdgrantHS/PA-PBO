@@ -2,12 +2,10 @@ package GUI;
 
 import GUI.SubGUIModel.BasePage;
 import GUI.SubGUIModel.TextField;
-import Model.Account;
 import Model.Borrow;
 import ProgramLogic.AccountController;
 import ProgramLogic.BorrowController;
 import com.mongodb.client.MongoCollection;
-import ProgramLogic.BorrowController;
 import db.MongoDB;
 
 import javax.swing.*;

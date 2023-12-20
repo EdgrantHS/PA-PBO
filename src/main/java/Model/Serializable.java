@@ -32,13 +32,9 @@ public class Serializable {
         Integer count = objectCounter.get(getClass());
         if (count == null) {
             count = 0;
-<<<<<<< HEAD
-        } else count++;
-=======
         } else {
             count++;
         }
->>>>>>> a7f57236a619a86d932837d17068fdf4d2ff02e5
         objectCounter.put(getClass(), count);
         this.id = count;
     }
