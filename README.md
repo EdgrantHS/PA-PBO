@@ -85,8 +85,5 @@ Please read [CONTRIBUTING.md](https://gist.github.com/yourusername/yourcontribut
 ## Authors
 
 - **Edgrant Henderson Suryajaya** - *GUI* - [Edgrant](https://github.com/edgrantH)
-<!-- - **Edgrant Henderson Suryajaya** - *GUI* - [Edgrant](https://github.com/edgrantH)
-- **Edgrant Henderson Suryajaya** - *GUI* - [Edgrant](https://github.com/edgrantH)
-- **Edgrant Henderson Suryajaya** - *GUI* - [Edgrant](https://github.com/edgrantH) -->
 - **Darmawan Hanif** - *Class Modelling & Real-time Observer* - [Hanif](https://github.com/drmwnhnf)
 - **Darren Nathanael Boentara** - *Controller* - [Darren](https://github.com/DarrenNathanaelB)
