@@ -16,7 +16,6 @@ import java.util.List;
  * This page is used to display the books that are currently available.
  * This page is accessible by all users.
  * This page is accessible from the navigation bar.
- *
  */
 public class MainPage implements Displayable {
 

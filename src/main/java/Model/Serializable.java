@@ -10,8 +10,7 @@ public class Serializable {
         Integer count = objectCounter.get(getClass());
         if (count == null) {
             count = 0;
-        }
-        else count++;
+        } else count++;
         objectCounter.put(getClass(), count);
         this.id = count;
     }

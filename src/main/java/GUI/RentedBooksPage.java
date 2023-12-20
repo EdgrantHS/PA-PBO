@@ -3,6 +3,7 @@ package GUI;
 import GUI.SubGUIModel.NavigationBar;
 import GUI.SubGUIModel.RefreshButton;
 import Model.Borrow;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Timestamp;
@@ -12,7 +13,8 @@ import java.util.List;
 import ProgramLogic.*;
 
 /**
- * Represents the rented books page of the application.**/
+ * Represents the rented books page of the application.
+ **/
 public class RentedBooksPage implements Displayable {
     private List<Borrow> borrows = new ArrayList<>();
     private PaginationController paginationController;

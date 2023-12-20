@@ -9,6 +9,7 @@ import com.mongodb.client.model.changestream.ChangeStreamDocument;
 import db.MongoDB;
 import com.mongodb.client.FindIterable;
 import org.bson.types.ObjectId;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ import java.util.List;
  * The {@code BookController} class is responsible for handling interactions and
  * updates related to the MongoDB collection of books. It includes methods for
  * observing changes in the collection and updating the application's book list.
+ *
  * @author Darmawan Hanif
  */
 
@@ -99,7 +101,7 @@ public class BookController {
 
         FindIterable<Book> result = collection.find();
 
-        result.forEach(b-> {
+        result.forEach(b -> {
             bookList.add(b);
         });
         return bookList;

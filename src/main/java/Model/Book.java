@@ -26,7 +26,7 @@ public class Book extends Serializable implements AutoCloseable {
         if (amount > 0) this.availability = true;
     }
 
-    public Book(){
+    public Book() {
         super();
     }
 

@@ -11,7 +11,7 @@ import javax.swing.*;
  *
  * @author Edgrant Henderson Suryajaya
  */
-public class LoginPage implements Displayable{
+public class LoginPage implements Displayable {
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     //editable Text
     // jangan lupa tambahin static account untuk nyimpen account yang kelog in

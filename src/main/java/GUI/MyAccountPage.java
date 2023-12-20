@@ -15,7 +15,7 @@ import GUI.SubGUIModel.Row;
 
 import javax.swing.*;
 
-public class MyAccountPage implements Displayable{
+public class MyAccountPage implements Displayable {
     /*-----------------------------------------------Variables--------------------------------------------------------*/
     //editable Text
     public String usernameText;
